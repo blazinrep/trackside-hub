@@ -70,6 +70,37 @@
     body { background-color: #0d0f12; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .gauge-card { background: linear-gradient(145deg, #161b22, #11141a); border: 1px solid #232a35; }
     .accent-glow { text-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
+
+    /* Christmas Tree Light Glow Animations */
+    .tree-housing {
+      background: linear-gradient(180deg, #1f242d 0%, #111418 100%);
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 10px 25px rgba(0,0,0,0.7);
+    }
+    .bulb {
+      border: 1px solid rgba(0,0,0,0.6);
+      transition: all 0.3s ease;
+    }
+    .bulb-blue-lit {
+      background-color: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8, inset 0 1px 2px #fff;
+    }
+    .bulb-amber-lit {
+      background-color: #f59e0b;
+      box-shadow: 0 0 12px #f59e0b, inset 0 1px 2px #fff;
+    }
+    .bulb-green-lit {
+      background-color: #10b981;
+      box-shadow: 0 0 16px #10b981, inset 0 1px 3px #fff;
+      animation: pulse-green 1.8s infinite ease-in-out;
+    }
+    .bulb-red-off {
+      background-color: #450a0a;
+      box-shadow: inset 0 2px 4px #000;
+    }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 10px #10b981; transform: scale(1); }
+      50% { box-shadow: 0 0 20px #34d399; transform: scale(1.04); }
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black">
@@ -86,17 +117,77 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="max-w-5xl mx-auto w-full px-4 pt-8 pb-6 text-center">
-    <div class="inline-block px-3 py-1 mb-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase">
-      Grand Opening Weekend Updates • South MS Motorsports
+  <!-- HERO SECTION WITH DUAL CHRISTMAS TREES -->
+  <section class="max-w-6xl mx-auto w-full px-4 pt-8 pb-6">
+    <div class="flex items-center justify-between gap-4">
+
+      <!-- LEFT CHRISTMAS TREE (DESKTOP) -->
+      <div class="hidden md:flex flex-col items-center tree-housing p-2.5 rounded-2xl border border-neutral-800 shrink-0">
+        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1">LANE 1</span>
+        <!-- Pre-Stage / Stage -->
+        <div class="flex gap-1 mb-1">
+          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
+          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
+        </div>
+        <div class="flex gap-1 mb-2.5">
+          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
+          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
+        </div>
+        <!-- Ambers -->
+        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
+        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
+        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-2"></div>
+        <!-- Green -->
+        <div class="w-6 h-6 rounded-full bulb bulb-green-lit mb-2"></div>
+        <!-- Red -->
+        <div class="w-6 h-6 rounded-full bulb bulb-red-off"></div>
+      </div>
+
+      <!-- CENTER HERO HEADLINE -->
+      <div class="text-center flex-1">
+        <div class="inline-block px-3 py-1 mb-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase">
+          Grand Opening Weekend Updates • South MS Motorsports
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
+          TRACKSIDE <span class="text-amber-500 accent-glow">PINE BELT</span>
+        </h1>
+        <p class="text-neutral-300 max-w-xl mx-auto text-sm sm:text-base">
+          Real-time Density Altitude (DA), weekend event schedules, and logistics for Swamp Bottom Dragstrip and regional South Mississippi speedways.
+        </p>
+
+        <!-- MINI TREE FOR MOBILE SCREENS -->
+        <div class="flex md:hidden items-center justify-center gap-1.5 mt-4 pt-3 border-t border-neutral-900">
+          <span class="text-[10px] text-neutral-500 uppercase font-mono mr-2">Tree:</span>
+          <div class="w-2.5 h-2.5 rounded-full bulb bulb-blue-lit"></div>
+          <div class="w-3 h-3 rounded-full bulb bulb-amber-lit"></div>
+          <div class="w-3.5 h-3.5 rounded-full bulb bulb-green-lit"></div>
+          <div class="w-2.5 h-2.5 rounded-full bulb bulb-red-off"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT CHRISTMAS TREE (DESKTOP) -->
+      <div class="hidden md:flex flex-col items-center tree-housing p-2.5 rounded-2xl border border-neutral-800 shrink-0">
+        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1">LANE 2</span>
+        <!-- Pre-Stage / Stage -->
+        <div class="flex gap-1 mb-1">
+          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
+          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
+        </div>
+        <div class="flex gap-1 mb-2.5">
+          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
+          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
+        </div>
+        <!-- Ambers -->
+        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
+        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
+        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-2"></div>
+        <!-- Green -->
+        <div class="w-6 h-6 rounded-full bulb bulb-green-lit mb-2"></div>
+        <!-- Red -->
+        <div class="w-6 h-6 rounded-full bulb bulb-red-off"></div>
+      </div>
+
     </div>
-    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
-      TRACKSIDE <span class="text-amber-500 accent-glow">PINE BELT</span>
-    </h1>
-    <p class="text-neutral-300 max-w-xl mx-auto text-sm sm:text-base">
-      Real-time Density Altitude (DA), weekend event schedules, and logistics for Swamp Bottom Dragstrip and regional South Mississippi speedways.
-    </p>
   </section>
 
   <!-- TELEMETRY / DENSITY ALTITUDE CALCULATOR -->
@@ -116,28 +207,24 @@
 
       <!-- READOUT METRICS -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-        <!-- DA Readout -->
         <div class="col-span-2 sm:col-span-1 bg-black/40 border border-amber-500/30 rounded-xl p-4 flex flex-col justify-center">
           <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Calculated DA</span>
           <span id="val-da" class="text-3xl sm:text-4xl font-black text-amber-400 font-mono my-1">--</span>
           <span class="text-[11px] text-neutral-400">Feet above sea level</span>
         </div>
 
-        <!-- Temp -->
         <div class="bg-black/30 border border-neutral-800/80 rounded-xl p-3 flex flex-col justify-center">
           <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Temperature</span>
           <span id="val-temp" class="text-2xl font-bold text-white font-mono my-1">--</span>
           <span id="val-dew" class="text-[11px] text-neutral-300">Dew Pt: --</span>
         </div>
 
-        <!-- Relative Humidity -->
         <div class="bg-black/30 border border-neutral-800/80 rounded-xl p-3 flex flex-col justify-center">
           <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Humidity</span>
           <span id="val-humidity" class="text-2xl font-bold text-white font-mono my-1">--</span>
           <span id="val-grains" class="text-[11px] text-neutral-300">Moisture: -- gr/lb</span>
         </div>
 
-        <!-- Barometer -->
         <div class="bg-black/30 border border-neutral-800/80 rounded-xl p-3 flex flex-col justify-center">
           <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Barometer</span>
           <span id="val-pressure" class="text-2xl font-bold text-white font-mono my-1">--</span>

@@ -71,35 +71,38 @@
     .gauge-card { background: linear-gradient(145deg, #161b22, #11141a); border: 1px solid #232a35; }
     .accent-glow { text-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
 
-    /* Christmas Tree Light Glow Animations */
+    /* Christmas Tree Housing */
     .tree-housing {
-      background: linear-gradient(180deg, #1f242d 0%, #111418 100%);
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 10px 25px rgba(0,0,0,0.7);
+      background: linear-gradient(180deg, #1e242c 0%, #0f1318 100%);
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.06), 0 12px 28px rgba(0,0,0,0.8);
     }
+    
+    /* Default Off State for All Bulbs */
     .bulb {
-      border: 1px solid rgba(0,0,0,0.6);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.8);
+      transition: background-color 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
     }
-    .bulb-blue-lit {
-      background-color: #38bdf8;
-      box-shadow: 0 0 10px #38bdf8, inset 0 1px 2px #fff;
+    .bulb-blue-off  { background-color: #0c2333; box-shadow: inset 0 2px 3px #000; }
+    .bulb-amber-off { background-color: #3b2807; box-shadow: inset 0 2px 3px #000; }
+    .bulb-green-off { background-color: #052417; box-shadow: inset 0 2px 3px #000; }
+    .bulb-red-off   { background-color: #2b0808; box-shadow: inset 0 2px 3px #000; }
+
+    /* Lit States */
+    .bulb-blue-on {
+      background-color: #38bdf8 !important;
+      box-shadow: 0 0 14px #38bdf8, 0 0 24px rgba(56, 189, 248, 0.6), inset 0 1px 2px #fff !important;
     }
-    .bulb-amber-lit {
-      background-color: #f59e0b;
-      box-shadow: 0 0 12px #f59e0b, inset 0 1px 2px #fff;
+    .bulb-amber-on {
+      background-color: #f59e0b !important;
+      box-shadow: 0 0 16px #f59e0b, 0 0 28px rgba(245, 158, 11, 0.7), inset 0 1px 3px #fff !important;
     }
-    .bulb-green-lit {
-      background-color: #10b981;
-      box-shadow: 0 0 16px #10b981, inset 0 1px 3px #fff;
-      animation: pulse-green 1.8s infinite ease-in-out;
+    .bulb-green-on {
+      background-color: #10b981 !important;
+      box-shadow: 0 0 22px #10b981, 0 0 36px rgba(16, 185, 129, 0.8), inset 0 2px 4px #fff !important;
     }
-    .bulb-red-off {
-      background-color: #450a0a;
-      box-shadow: inset 0 2px 4px #000;
-    }
-    @keyframes pulse-green {
-      0%, 100% { box-shadow: 0 0 10px #10b981; transform: scale(1); }
-      50% { box-shadow: 0 0 20px #34d399; transform: scale(1.04); }
+    .bulb-red-on {
+      background-color: #ef4444 !important;
+      box-shadow: 0 0 20px #ef4444, inset 0 1px 3px #fff !important;
     }
   </style>
 </head>
@@ -117,30 +120,32 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH DUAL CHRISTMAS TREES -->
+  <!-- HERO SECTION WITH DUAL ANIMATED CHRISTMAS TREES -->
   <section class="max-w-6xl mx-auto w-full px-4 pt-8 pb-6">
     <div class="flex items-center justify-between gap-4">
 
-      <!-- LEFT CHRISTMAS TREE (DESKTOP) -->
-      <div class="hidden md:flex flex-col items-center tree-housing p-2.5 rounded-2xl border border-neutral-800 shrink-0">
-        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1">LANE 1</span>
-        <!-- Pre-Stage / Stage -->
-        <div class="flex gap-1 mb-1">
-          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
-          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
+      <!-- LEFT CHRISTMAS TREE (LANE 1) -->
+      <div class="hidden md:flex flex-col items-center tree-housing p-3 rounded-2xl border border-neutral-800/90 shrink-0">
+        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1.5">LANE 1</span>
+        
+        <!-- Pre-Stage Bulbs -->
+        <div class="flex gap-1.5 mb-1">
+          <div class="tree-pre-1 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
+          <div class="tree-pre-1 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
         </div>
-        <div class="flex gap-1 mb-2.5">
-          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
-          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
+        <!-- Stage Bulbs -->
+        <div class="flex gap-1.5 mb-3">
+          <div class="tree-stage-1 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
+          <div class="tree-stage-1 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
         </div>
-        <!-- Ambers -->
-        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
-        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
-        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-2"></div>
+        <!-- 3 Countdown Ambers -->
+        <div class="tree-amber1-1 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
+        <div class="tree-amber2-1 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
+        <div class="tree-amber3-1 w-6 h-6 rounded-full bulb bulb-amber-off mb-2.5"></div>
         <!-- Green -->
-        <div class="w-6 h-6 rounded-full bulb bulb-green-lit mb-2"></div>
+        <div class="tree-green-1 w-6 h-6 rounded-full bulb bulb-green-off mb-2"></div>
         <!-- Red -->
-        <div class="w-6 h-6 rounded-full bulb bulb-red-off"></div>
+        <div class="tree-red-1 w-6 h-6 rounded-full bulb bulb-red-off"></div>
       </div>
 
       <!-- CENTER HERO HEADLINE -->
@@ -155,36 +160,39 @@
           Real-time Density Altitude (DA), weekend event schedules, and logistics for Swamp Bottom Dragstrip and regional South Mississippi speedways.
         </p>
 
-        <!-- MINI TREE FOR MOBILE SCREENS -->
-        <div class="flex md:hidden items-center justify-center gap-1.5 mt-4 pt-3 border-t border-neutral-900">
-          <span class="text-[10px] text-neutral-500 uppercase font-mono mr-2">Tree:</span>
-          <div class="w-2.5 h-2.5 rounded-full bulb bulb-blue-lit"></div>
-          <div class="w-3 h-3 rounded-full bulb bulb-amber-lit"></div>
-          <div class="w-3.5 h-3.5 rounded-full bulb bulb-green-lit"></div>
-          <div class="w-2.5 h-2.5 rounded-full bulb bulb-red-off"></div>
+        <!-- MINI TREE FOR MOBILE (SYNCS WITH ANIMATION) -->
+        <div class="flex md:hidden items-center justify-center gap-2 mt-4 pt-3 border-t border-neutral-900">
+          <span class="text-[10px] text-neutral-500 uppercase font-mono mr-1">Tree:</span>
+          <div class="tree-pre-1 w-2.5 h-2.5 rounded-full bulb bulb-blue-off"></div>
+          <div class="tree-amber1-1 w-3 h-3 rounded-full bulb bulb-amber-off"></div>
+          <div class="tree-amber2-1 w-3 h-3 rounded-full bulb bulb-amber-off"></div>
+          <div class="tree-amber3-1 w-3 h-3 rounded-full bulb bulb-amber-off"></div>
+          <div class="tree-green-1 w-3.5 h-3.5 rounded-full bulb bulb-green-off"></div>
         </div>
       </div>
 
-      <!-- RIGHT CHRISTMAS TREE (DESKTOP) -->
-      <div class="hidden md:flex flex-col items-center tree-housing p-2.5 rounded-2xl border border-neutral-800 shrink-0">
-        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1">LANE 2</span>
-        <!-- Pre-Stage / Stage -->
-        <div class="flex gap-1 mb-1">
-          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
-          <div class="w-3.5 h-2 rounded-t-sm bulb bulb-blue-lit" title="Pre-Stage"></div>
+      <!-- RIGHT CHRISTMAS TREE (LANE 2) -->
+      <div class="hidden md:flex flex-col items-center tree-housing p-3 rounded-2xl border border-neutral-800/90 shrink-0">
+        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1.5">LANE 2</span>
+        
+        <!-- Pre-Stage Bulbs -->
+        <div class="flex gap-1.5 mb-1">
+          <div class="tree-pre-2 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
+          <div class="tree-pre-2 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
         </div>
-        <div class="flex gap-1 mb-2.5">
-          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
-          <div class="w-3.5 h-2 rounded-b-sm bulb bulb-blue-lit" title="Stage"></div>
+        <!-- Stage Bulbs -->
+        <div class="flex gap-1.5 mb-3">
+          <div class="tree-stage-2 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
+          <div class="tree-stage-2 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
         </div>
-        <!-- Ambers -->
-        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
-        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-1.5"></div>
-        <div class="w-6 h-6 rounded-full bulb bulb-amber-lit mb-2"></div>
+        <!-- 3 Countdown Ambers -->
+        <div class="tree-amber1-2 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
+        <div class="tree-amber2-2 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
+        <div class="tree-amber3-2 w-6 h-6 rounded-full bulb bulb-amber-off mb-2.5"></div>
         <!-- Green -->
-        <div class="w-6 h-6 rounded-full bulb bulb-green-lit mb-2"></div>
+        <div class="tree-green-2 w-6 h-6 rounded-full bulb bulb-green-off mb-2"></div>
         <!-- Red -->
-        <div class="w-6 h-6 rounded-full bulb bulb-red-off"></div>
+        <div class="tree-red-2 w-6 h-6 rounded-full bulb bulb-red-off"></div>
       </div>
 
     </div>
@@ -393,8 +401,9 @@
     </div>
   </footer>
 
-  <!-- SCRIPT FOR DENSITY ALTITUDE AND API FETCH -->
+  <!-- DENSITY ALTITUDE & ANIMATED CHRISTMAS TREE LOGIC -->
   <script>
+    // Tab Switching Logic
     function switchTrack(type) {
       const dragTab = document.getElementById('tab-drag');
       const dirtTab = document.getElementById('tab-dirt');
@@ -414,6 +423,68 @@
       }
     }
 
+    // --- ANIMATED CHRISTMAS TREE SEQUENCE (NHRA FULL SPORTSMAN TREE) ---
+    function setBulbs(selector, turnOn, onClass) {
+      document.querySelectorAll(selector).forEach(el => {
+        if(turnOn) {
+          el.classList.add(onClass);
+        } else {
+          el.classList.remove(onClass);
+        }
+      });
+    }
+
+    function resetAllBulbs() {
+      setBulbs('.tree-pre-1, .tree-pre-2', false, 'bulb-blue-on');
+      setBulbs('.tree-stage-1, .tree-stage-2', false, 'bulb-blue-on');
+      setBulbs('.tree-amber1-1, .tree-amber1-2', false, 'bulb-amber-on');
+      setBulbs('.tree-amber2-1, .tree-amber2-2', false, 'bulb-amber-on');
+      setBulbs('.tree-amber3-1, .tree-amber3-2', false, 'bulb-amber-on');
+      setBulbs('.tree-green-1, .tree-green-2', false, 'bulb-green-on');
+      setBulbs('.tree-red-1, .tree-red-2', false, 'bulb-red-on');
+    }
+
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    async function runTreeLoop() {
+      while(true) {
+        resetAllBulbs();
+        await sleep(1000);
+
+        // 1. Pre-Stage on Lane 1 & 2
+        setBulbs('.tree-pre-1, .tree-pre-2', true, 'bulb-blue-on');
+        await sleep(800);
+
+        // 2. Stage on Lane 1 & 2
+        setBulbs('.tree-stage-1, .tree-stage-2', true, 'bulb-blue-on');
+        await sleep(1200);
+
+        // 3. Amber 1 (0.500 count)
+        setBulbs('.tree-amber1-1, .tree-amber1-2', true, 'bulb-amber-on');
+        await sleep(500);
+
+        // 4. Amber 2 (0.500 count)
+        setBulbs('.tree-amber1-1, .tree-amber1-2', false, 'bulb-amber-on');
+        setBulbs('.tree-amber2-1, .tree-amber2-2', true, 'bulb-amber-on');
+        await sleep(500);
+
+        // 5. Amber 3 (0.500 count)
+        setBulbs('.tree-amber2-1, .tree-amber2-2', false, 'bulb-amber-on');
+        setBulbs('.tree-amber3-1, .tree-amber3-2', true, 'bulb-amber-on');
+        await sleep(500);
+
+        // 6. GREEN LIGHT (Launch!)
+        setBulbs('.tree-amber3-1, .tree-amber3-2', false, 'bulb-amber-on');
+        setBulbs('.tree-green-1, .tree-green-2', true, 'bulb-green-on');
+        await sleep(2200);
+
+        // 7. Track Cleared / Cooldown
+        resetAllBulbs();
+        await sleep(1500);
+      }
+    }
+
+    // --- PSYCHROMETRICS & DENSITY ALTITUDE FORMULAS ---
     function calculateDA(tempF, stationPressureInHg, relHumidity) {
       const tempC = (tempF - 32) * (5 / 9);
       const tempK = tempC + 273.15;
@@ -479,7 +550,11 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', fetchWeatherData);
+    // Initialize Weather and Tree Sequence
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchWeatherData();
+      runTreeLoop();
+    });
     setInterval(fetchWeatherData, 15 * 60 * 1000);
   </script>
 </body>

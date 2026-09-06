@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swamp Bottom Dragstrip & South MS Motorsports Guide | Live DA, Weather & Schedule</title>
+  <meta name="description" content="Official schedule guide, live Columbia MS trackside weather, Density Altitude (DA) calculator, and racer logistics for Swamp Bottom Dragstrip and Pine Belt motorsports." />
+  <meta name="keywords" content="Swamp Bottom Dragstrip, Columbia MS dragstrip, Marion County drag racing, NHRA Division 4 Mississippi, Pine Belt dragway schedule, Columbia MS DA calculator" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Swamp Bottom Dragstrip & South MS Motorsports Guide" />
+  <meta property="og:description" content="Live trackside Density Altitude (DA), weekend event run orders, and pit logistics for Columbia, MS." />
+  <meta property="og:type" content="website" />
+
+  <!-- JSON-LD Structured Data for AEO / Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SportsActivityLocation",
+        "name": "Swamp Bottom Dragstrip",
+        "description": "300-acre NHRA Division 4 dragstrip facility featuring an all-concrete 1/4-mile racing surface located in Columbia, Mississippi.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Columbia",
+          "addressRegion": "MS",
+          "postalCode": "39429",
+          "addressCountry": "US"
+        },
+        "sport": "Drag Racing"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Swamp Bottom Dragstrip in Columbia MS currently open?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Swamp Bottom Dragstrip celebrated its official grand opening on September 5–6, 2026, opening its 300-acre facility and quarter-mile concrete track to racers and spectators."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What sanctioning body is Swamp Bottom Dragstrip affiliated with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Swamp Bottom Dragstrip is a sanctioned NHRA Member Track Network facility under the South Central Division (Division 4)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What type of racing surface is at Swamp Bottom Dragstrip?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The facility features a full-length quarter-mile concrete racing surface, modern lighting, grandstands, and an electronic timing tower."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body { background-color: #0d0f12; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .gauge-card { background: linear-gradient(145deg, #161b22, #11141a); border: 1px solid #232a35; }
+    .accent-glow { text-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- TOP LIVE STATUS BAR -->
+  <header class="w-full bg-neutral-900 border-b border-neutral-800 px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2">
+    <div class="flex items-center gap-2">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span class="font-bold text-neutral-300 uppercase tracking-wide">Live Columbia, MS Conditions</span>
+      <span id="update-time" class="text-neutral-400 text-[11px]">(Updating...)</span>
+    </div>
+    <div class="text-neutral-300 font-mono text-[11px]">
+      <span class="text-amber-400 font-bold">Independent Pit & Racer Guide</span> • Marion County, MS
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-5xl mx-auto w-full px-4 pt-8 pb-6 text-center">
+    <div class="inline-block px-3 py-1 mb-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase">
+      Grand Opening Weekend Updates • South MS Motorsports
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
+      TRACKSIDE <span class="text-amber-500 accent-glow">PINE BELT</span>
+    </h1>
+    <p class="text-neutral-300 max-w-xl mx-auto text-sm sm:text-base">
+      Real-time Density Altitude (DA), weekend event schedules, and logistics for Swamp Bottom Dragstrip and regional South Mississippi speedways.
+    </p>
+  </section>
+
+  <!-- TELEMETRY / DENSITY ALTITUDE CALCULATOR -->
+  <main class="max-w-5xl mx-auto w-full px-4 mb-10">
+    <div class="gauge-card rounded-2xl p-5 shadow-2xl">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-neutral-800 pb-4 mb-5 gap-2">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-gauge-high text-amber-500"></i> Trackside Weather & Density Altitude
+          </h2>
+          <p class="text-xs text-neutral-300">Live Station: Columbia, MS • Elevation ~150 ft ASL</p>
+        </div>
+        <button onclick="fetchWeatherData()" class="text-xs bg-neutral-800 hover:bg-neutral-700 text-amber-400 border border-neutral-700 px-3 py-1.5 rounded-lg transition flex items-center gap-1.5">
+          <i class="fa-solid fa-rotate"></i> Refresh Reading
+        </button>
+      </div>
+
+      <!-- READOUT METRICS -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+        <!-- DA Readout -->
+        <div class="col-span-2 sm:col-span-1 bg-black/40 border border-amber-500/30 rounded-xl p-4 flex flex-col justify-center">
+          <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Calculated DA</span>
+          <span id="val-da" class="text-3xl sm:text-4xl font-black text-amber-400 font-mono my-1">--</span>
+          <span class="text-[11px] text-neutral-400">Feet above sea level</span>
+        </div>
+
+        <!-- Temp -->
+        <div class="bg-black/30 border border-neutral-800/80 rounded-xl p-3 flex flex-col justify-center">
+          <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Temperature</span>
+          <span id="val-temp" class="text-2xl font-bold text-white font-mono my-1">--</span>
+          <span id="val-dew" class="text-[11px] text-neutral-300">Dew Pt: --</span>
+        </div>
+
+        <!-- Relative Humidity -->
+        <div class="bg-black/30 border border-neutral-800/80 rounded-xl p-3 flex flex-col justify-center">
+          <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Humidity</span>
+          <span id="val-humidity" class="text-2xl font-bold text-white font-mono my-1">--</span>
+          <span id="val-grains" class="text-[11px] text-neutral-300">Moisture: -- gr/lb</span>
+        </div>
+
+        <!-- Barometer -->
+        <div class="bg-black/30 border border-neutral-800/80 rounded-xl p-3 flex flex-col justify-center">
+          <span class="text-xs font-semibold text-neutral-300 tracking-wider uppercase">Barometer</span>
+          <span id="val-pressure" class="text-2xl font-bold text-white font-mono my-1">--</span>
+          <span class="text-[11px] text-neutral-300">Station Press (inHg)</span>
+        </div>
+      </div>
+      
+      <p class="text-[11px] text-neutral-400 mt-3 italic text-center">
+        *Computed via standard SAE J1349 psychrometric formulas. Updated automatically every 15 minutes.
+      </p>
+    </div>
+  </main>
+
+  <!-- TRACK TABS -->
+  <div class="max-w-5xl mx-auto w-full px-4 mb-6">
+    <div class="flex border-b border-neutral-800 space-x-4 overflow-x-auto">
+      <button id="tab-drag" onclick="switchTrack('drag')" class="pb-3 border-b-2 border-amber-500 font-bold text-white text-sm flex items-center gap-2 whitespace-nowrap">
+        <i class="fa-solid fa-flag-checkered text-amber-500"></i> Swamp Bottom Dragstrip (Columbia)
+      </button>
+      <button id="tab-dirt" onclick="switchTrack('dirt')" class="pb-3 border-b-2 border-transparent font-medium text-neutral-300 hover:text-white text-sm flex items-center gap-2 whitespace-nowrap">
+        <i class="fa-solid fa-road text-amber-500"></i> Regional Dirt Ovals & Tracks
+      </button>
+    </div>
+  </div>
+
+  <!-- SECTION 1: SWAMP BOTTOM DRAGSTRIP INFO -->
+  <section id="content-drag" class="max-w-5xl mx-auto w-full px-4 space-y-6">
+    <div class="gauge-card rounded-xl p-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-neutral-800 pb-4 mb-6">
+        <div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-1 rounded font-bold uppercase">NHRA Div 4 Member Track</span>
+            <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded font-bold uppercase">Now Open (Sept 2026)</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white">Swamp Bottom Dragstrip</h3>
+          <p class="text-sm text-neutral-300">Columbia, MS • 300+ Acre Facility • 1/4-Mile Concrete Track</p>
+        </div>
+        <a href="https://maps.google.com/?q=Columbia+MS" target="_blank" class="w-full md:w-auto text-center bg-amber-500 hover:bg-amber-400 text-black font-bold px-4 py-2 rounded-lg text-sm transition">
+          <i class="fa-solid fa-diamond-turn-right mr-1"></i> Directions to Track
+        </a>
+      </div>
+
+      <!-- RUN ORDER / GENERAL SCHEDULE -->
+      <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-3">General Weekend Run Schedule</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-sm mb-6">
+        <div class="bg-neutral-900/60 p-3 rounded-lg border border-neutral-800">
+          <div class="text-amber-500 font-bold text-xs">GATES OPEN</div>
+          <div class="text-white font-semibold">4:00 PM</div>
+          <div class="text-neutral-300 text-xs mt-1">Racer parking & early tech</div>
+        </div>
+        <div class="bg-neutral-900/60 p-3 rounded-lg border border-neutral-800">
+          <div class="text-amber-500 font-bold text-xs">TIME TRIALS / T&T</div>
+          <div class="text-white font-semibold">5:30 PM</div>
+          <div class="text-neutral-300 text-xs mt-1">Open test passes</div>
+        </div>
+        <div class="bg-neutral-900/60 p-3 rounded-lg border border-neutral-800">
+          <div class="text-amber-500 font-bold text-xs">DRIVERS MEETING</div>
+          <div class="text-white font-semibold">7:00 PM</div>
+          <div class="text-neutral-300 text-xs mt-1">Pairings & staging calls</div>
+        </div>
+        <div class="bg-neutral-900/60 p-3 rounded-lg border border-neutral-800">
+          <div class="text-amber-500 font-bold text-xs">ELIMINATIONS</div>
+          <div class="text-white font-semibold">7:30 PM</div>
+          <div class="text-neutral-300 text-xs mt-1">Bracket racing under the lights</div>
+        </div>
+      </div>
+
+      <!-- CLASSES & TECH NOTE -->
+      <div class="bg-neutral-950/60 border border-neutral-800 rounded-lg p-4 text-xs space-y-2">
+        <span class="font-bold text-neutral-300 uppercase">Sanctioned Racing Classes:</span>
+        <p class="text-neutral-300">
+          <strong class="text-white">Super Pro (Box)</strong>, <strong class="text-white">Pro (No Box)</strong>, <strong class="text-white">Sportsman / Street Legal</strong>, and <strong class="text-white">Jr. Dragster</strong>. Standard NHRA safety tech applies across all run groups.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: DIRT OVALS -->
+  <section id="content-dirt" class="max-w-5xl mx-auto w-full px-4 space-y-6 hidden">
+    <div class="gauge-card rounded-xl p-6">
+      <div class="border-b border-neutral-800 pb-4 mb-4">
+        <span class="bg-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded font-bold uppercase">South MS Circle Tracks</span>
+        <h3 class="text-2xl font-bold text-white mt-2">Regional Dirt Tracks & Speedways</h3>
+        <p class="text-sm text-neutral-300">Coverage for Hattiesburg, Pike County, and local dirt circuits.</p>
+      </div>
+      <div class="p-8 text-center border border-dashed border-neutral-800 rounded-xl">
+        <i class="fa-solid fa-cone-striped text-3xl text-amber-500 mb-2"></i>
+        <h4 class="text-white font-bold text-base">Dirt Schedules Coming Soon</h4>
+        <p class="text-neutral-300 text-xs max-w-md mx-auto mt-1">
+          Consolidating regional Late Model, Modified, and Street Stock race schedules for Marion, Forrest, and Pike counties.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO SEARCH & ANSWER ENGINE FAQ BLOCK -->
+  <section class="max-w-5xl mx-auto w-full px-4 my-8">
+    <div class="gauge-card rounded-xl p-6">
+      <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-circle-question"></i> Track FAQ & Visitor Quick Reference
+      </h3>
+      <div class="space-y-4 text-xs">
+        <div class="border-b border-neutral-800/80 pb-3">
+          <p class="font-bold text-white text-sm">Where is Swamp Bottom Dragstrip located?</p>
+          <p class="text-neutral-300 mt-1">Swamp Bottom Dragstrip is situated on 300+ acres in Columbia, Marion County, Mississippi, conveniently accessible from the US-98 and MS-13 transit corridors.</p>
+        </div>
+        <div class="border-b border-neutral-800/80 pb-3">
+          <p class="font-bold text-white text-sm">What is the track surface and length?</p>
+          <p class="text-neutral-300 mt-1">The facility features a full-length quarter-mile (1/4-mile) poured concrete racing surface equipped with digital timing equipment, extensive shutdown runout, and return lanes.</p>
+        </div>
+        <div>
+          <p class="font-bold text-white text-sm">What events and classes run at the facility?</p>
+          <p class="text-neutral-300 mt-1">As an official member of the NHRA Division 4 South Central network, programs include Summit Racing Equipment E.T. Series, Jr. Dragster League, Street Legal test sessions, and bracket racing series.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RACER LOGISTICS -->
+  <section class="max-w-5xl mx-auto w-full px-4 mb-10">
+    <h3 class="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-4">
+      Racer Logistics & Pit Essentials (Columbia & Marion County)
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+      <div class="bg-neutral-900 border border-neutral-800 p-4 rounded-xl">
+        <div class="flex items-center gap-2 text-amber-500 font-bold mb-2">
+          <i class="fa-solid fa-gas-pump"></i> Diesel & Hauler Fuel
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed">
+          High-canopy diesel stops accessible for 40ft+ goosenecks and motorhomes located along Hwy 98 and Hwy 13.
+        </p>
+      </div>
+
+      <div class="bg-neutral-900 border border-neutral-800 p-4 rounded-xl">
+        <div class="flex items-center gap-2 text-amber-500 font-bold mb-2">
+          <i class="fa-solid fa-hotel"></i> Trailer Lodging & Staging
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed">
+          Motels and RV hookup locations within a 15-minute drive of Columbia with turnaround space for haulers.
+        </p>
+      </div>
+
+      <div class="bg-neutral-900 border border-neutral-800 p-4 rounded-xl">
+        <div class="flex items-center gap-2 text-amber-500 font-bold mb-2">
+          <i class="fa-solid fa-wrench"></i> Race Day Hardware & Parts
+        </div>
+        <p class="text-xs text-neutral-300 leading-relaxed">
+          Local parts houses, emergency tire repair, and fabrication services available across the Pine Belt corridor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER & LEGAL DISCLAIMER -->
+  <footer class="mt-auto bg-black border-t border-neutral-900 py-8 px-4 text-center text-xs text-neutral-400">
+    <div class="max-w-3xl mx-auto space-y-3">
+      <p class="font-medium text-neutral-400">
+        Trackside Pine Belt is an independent enthusiast directory providing local motorsports telemetry, Density Altitude estimates, and community schedules.
+      </p>
+      <p class="text-[11px] text-neutral-400 leading-relaxed">
+        <strong>Disclaimer:</strong> This guide is not affiliated with, authorized, or operated by Swamp Bottom Dragstrip or NHRA. Event schedules, gate policies, and rain calls are managed solely by track management at the gate.
+      </p>
+      <div class="pt-2 text-neutral-400 text-[11px]">
+        Built for South Mississippi racers • Marion County, MS
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR DENSITY ALTITUDE AND API FETCH -->
+  <script>
+    function switchTrack(type) {
+      const dragTab = document.getElementById('tab-drag');
+      const dirtTab = document.getElementById('tab-dirt');
+      const dragContent = document.getElementById('content-drag');
+      const dirtContent = document.getElementById('content-dirt');
+
+      if(type === 'drag') {
+        dragTab.className = "pb-3 border-b-2 border-amber-500 font-bold text-white text-sm flex items-center gap-2 whitespace-nowrap";
+        dirtTab.className = "pb-3 border-b-2 border-transparent font-medium text-neutral-300 hover:text-white text-sm flex items-center gap-2 whitespace-nowrap";
+        dragContent.classList.remove('hidden');
+        dirtContent.classList.add('hidden');
+      } else {
+        dirtTab.className = "pb-3 border-b-2 border-amber-500 font-bold text-white text-sm flex items-center gap-2 whitespace-nowrap";
+        dragTab.className = "pb-3 border-b-2 border-transparent font-medium text-neutral-300 hover:text-white text-sm flex items-center gap-2 whitespace-nowrap";
+        dirtContent.classList.remove('hidden');
+        dragContent.classList.add('hidden');
+      }
+    }
+
+    function calculateDA(tempF, stationPressureInHg, relHumidity) {
+      const tempC = (tempF - 32) * (5 / 9);
+      const tempK = tempC + 273.15;
+      const pressureHpa = stationPressureInHg * 33.8639;
+
+      const es = 6.1121 * Math.exp((18.678 - (tempC / 234.5)) * (tempC / (257.14 + tempC)));
+      const vaporPressure = (relHumidity / 100) * es;
+
+      const virtualTempK = tempK / (1 - (vaporPressure / pressureHpa) * (1 - 0.622));
+      const airDensity = (pressureHpa * 100) / (287.058 * virtualTempK);
+      const daFeet = 145366 * (1 - Math.pow(airDensity / 1.225, 0.234969));
+      return Math.round(daFeet);
+    }
+
+    function calculateGrains(tempF, relHumidity, stationPressureInHg) {
+      const tempC = (tempF - 32) * (5 / 9);
+      const pressureHpa = stationPressureInHg * 33.8639;
+      const es = 6.1121 * Math.exp((17.67 * tempC) / (tempC + 243.5));
+      const e = (relHumidity / 100) * es;
+      const humidityRatio = 0.62198 * (e / (pressureHpa - e));
+      const grains = Math.round(humidityRatio * 7000);
+      return isNaN(grains) ? "--" : grains;
+    }
+
+    function calculateDewPoint(tempF, relHumidity) {
+      const tempC = (tempF - 32) * (5 / 9);
+      const a = 17.27;
+      const b = 237.7;
+      const alpha = ((a * tempC) / (b + tempC)) + Math.log(relHumidity / 100);
+      const dpC = (b * alpha) / (a - alpha);
+      return Math.round((dpC * 9/5) + 32);
+    }
+
+    async function fetchWeatherData() {
+      const updateEl = document.getElementById('update-time');
+      updateEl.innerText = "(Refreshing...)";
+      
+      try {
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=31.2507&longitude=-89.8312&current=temperature_2m,relative_humidity_2m,surface_pressure&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago';
+        const res = await fetch(url);
+        const data = await res.json();
+        
+        const temp = Math.round(data.current.temperature_2m);
+        const humidity = Math.round(data.current.relative_humidity_2m);
+        const pressureInHg = (data.current.surface_pressure * 0.02953).toFixed(2);
+        
+        const da = calculateDA(temp, pressureInHg, humidity);
+        const dew = calculateDewPoint(temp, humidity);
+        const grains = calculateGrains(temp, humidity, pressureInHg);
+
+        document.getElementById('val-da').innerText = (da > 0 ? "+" : "") + da.toLocaleString();
+        document.getElementById('val-temp').innerText = temp + "°F";
+        document.getElementById('val-dew').innerText = "Dew Pt: " + dew + "°F";
+        document.getElementById('val-humidity').innerText = humidity + "%";
+        document.getElementById('val-grains').innerText = "Moisture: " + grains + " gr/lb";
+        document.getElementById('val-pressure').innerText = pressureInHg;
+
+        const now = new Date();
+        updateEl.innerText = `(Updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })})`;
+      } catch (err) {
+        console.error("Failed to load weather data:", err);
+        updateEl.innerText = "(Weather temporarily unavailable)";
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchWeatherData);
+    setInterval(fetchWeatherData, 15 * 60 * 1000);
+  </script>
+</body>
+</html>

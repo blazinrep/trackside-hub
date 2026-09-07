@@ -12,7 +12,7 @@
   <meta property="og:description" content="Live trackside Density Altitude (DA), weekend event run orders, and pit logistics for Columbia, MS." />
   <meta property="og:type" content="website" />
 
-  <!-- JSON-LD Structured Data for AEO / Google Rich Snippets -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,23 +38,15 @@
             "name": "Is Swamp Bottom Dragstrip in Columbia MS currently open?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, Swamp Bottom Dragstrip celebrated its official grand opening on September 5–6, 2026, opening its 300-acre facility and quarter-mile concrete track to racers and spectators."
+              "text": "Yes, Swamp Bottom Dragstrip celebrated its official opening in September 2026, opening its 300-acre facility and quarter-mile concrete track to racers and spectators."
             }
           },
           {
             "@type": "Question",
-            "name": "What sanctioning body is Swamp Bottom Dragstrip affiliated with?",
+            "name": "What timing system does Swamp Bottom Dragstrip use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Swamp Bottom Dragstrip is a sanctioned NHRA Member Track Network facility under the South Central Division (Division 4)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What type of racing surface is at Swamp Bottom Dragstrip?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The facility features a full-length quarter-mile concrete racing surface, modern lighting, grandstands, and an electronic timing tower."
+              "text": "Swamp Bottom Dragstrip utilizes an authentic Accutime Timing Systems electronic Christmas tree and timing tower network."
             }
           }
         ]
@@ -63,53 +55,73 @@
   }
   </script>
 
-  <!-- Tailwind CSS via CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    body { background-color: #0d0f12; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .gauge-card { background: linear-gradient(145deg, #161b22, #11141a); border: 1px solid #232a35; }
-    .accent-glow { text-shadow: 0 0 12px rgba(245, 158, 11, 0.4); }
+    body { background-color: #0b0e14; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .gauge-card { background: linear-gradient(145deg, #151a22, #0e1218); border: 1px solid #232a36; }
+    .accent-glow { text-shadow: 0 0 14px rgba(245, 158, 11, 0.45); }
 
-    /* Christmas Tree Housing */
-    .tree-housing {
-      background: linear-gradient(180deg, #1e242c 0%, #0f1318 100%);
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.06), 0 12px 28px rgba(0,0,0,0.8);
+    /* Accutime Tree Styling */
+    .accutime-header-box {
+      background: #000000;
+      border: 1px solid #334155;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+    }
+    .accutime-spine {
+      background: #f8fafc;
+      color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, "Arial Black", sans-serif;
+      letter-spacing: 0.22em;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+    .accutime-blinder {
+      background: #05070a;
+      border: 1px solid #1e293b;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
     }
     
-    /* Default Off State for All Bulbs */
+    /* Bulbs Base */
     .bulb {
       border: 1px solid rgba(0,0,0,0.8);
-      transition: background-color 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
+      transition: background-color 0.08s ease, box-shadow 0.08s ease;
     }
-    .bulb-blue-off  { background-color: #0c2333; box-shadow: inset 0 2px 3px #000; }
+    .bulb-ind-off   { background-color: #3b2807; box-shadow: inset 0 2px 2px #000; }
+    .bulb-blue-off  { background-color: #0c2333; box-shadow: inset 0 2px 2px #000; }
     .bulb-amber-off { background-color: #3b2807; box-shadow: inset 0 2px 3px #000; }
     .bulb-green-off { background-color: #052417; box-shadow: inset 0 2px 3px #000; }
     .bulb-red-off   { background-color: #2b0808; box-shadow: inset 0 2px 3px #000; }
 
-    /* Lit States */
+    /* Bulbs Lit */
+    .bulb-ind-on {
+      background-color: #fbbf24 !important;
+      box-shadow: 0 0 10px #fbbf24, 0 0 16px rgba(251, 191, 36, 0.7), inset 0 1px 2px #fff !important;
+    }
     .bulb-blue-on {
       background-color: #38bdf8 !important;
-      box-shadow: 0 0 14px #38bdf8, 0 0 24px rgba(56, 189, 248, 0.6), inset 0 1px 2px #fff !important;
+      box-shadow: 0 0 12px #38bdf8, 0 0 20px rgba(56, 189, 248, 0.8), inset 0 1px 2px #fff !important;
     }
     .bulb-amber-on {
       background-color: #f59e0b !important;
-      box-shadow: 0 0 16px #f59e0b, 0 0 28px rgba(245, 158, 11, 0.7), inset 0 1px 3px #fff !important;
+      box-shadow: 0 0 18px #f59e0b, 0 0 30px rgba(245, 158, 11, 0.85), inset 0 1px 3px #fff !important;
     }
     .bulb-green-on {
       background-color: #10b981 !important;
-      box-shadow: 0 0 22px #10b981, 0 0 36px rgba(16, 185, 129, 0.8), inset 0 2px 4px #fff !important;
+      box-shadow: 0 0 24px #10b981, 0 0 40px rgba(16, 185, 129, 0.9), inset 0 2px 4px #fff !important;
     }
     .bulb-red-on {
       background-color: #ef4444 !important;
-      box-shadow: 0 0 20px #ef4444, inset 0 1px 3px #fff !important;
+      box-shadow: 0 0 22px #ef4444, inset 0 1px 3px #fff !important;
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-black">
 
   <!-- TOP LIVE STATUS BAR -->
-  <header class="w-full bg-neutral-900 border-b border-neutral-800 px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2">
+  <header class="w-full bg-neutral-950 border-b border-neutral-800 px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-2">
     <div class="flex items-center gap-2">
       <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
       <span class="font-bold text-neutral-300 uppercase tracking-wide">Live Columbia, MS Conditions</span>
@@ -120,79 +132,109 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH DUAL ANIMATED CHRISTMAS TREES -->
+  <!-- HERO SECTION WITH REPLICATED ACCUTIME TREE -->
   <section class="max-w-6xl mx-auto w-full px-4 pt-8 pb-6">
-    <div class="flex items-center justify-between gap-4">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
 
-      <!-- LEFT CHRISTMAS TREE (LANE 1) -->
-      <div class="hidden md:flex flex-col items-center tree-housing p-3 rounded-2xl border border-neutral-800/90 shrink-0">
-        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1.5">LANE 1</span>
+      <!-- AUTHENTIC ACCUTIME CHRISTMAS TREE (Modeled after Swamp Bottom starting line) -->
+      <div class="flex flex-col items-center shrink-0">
         
-        <!-- Pre-Stage Bulbs -->
-        <div class="flex gap-1.5 mb-1">
-          <div class="tree-pre-1 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
-          <div class="tree-pre-1 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
+        <!-- HEADER 1: PRE-STAGE -->
+        <div class="accutime-header-box px-3 py-1 rounded-t flex flex-col items-center w-48 text-center border-b-2 border-neutral-800">
+          <span class="text-[10px] font-black tracking-widest text-white uppercase font-sans">PRE-STAGE</span>
+          <div class="flex items-center justify-between w-full mt-1 px-2">
+            <!-- Left Lane Pre-Stage Bulbs -->
+            <div class="flex gap-1">
+              <div class="tree-pre-1 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+              <div class="tree-pre-1 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+            </div>
+            <!-- Center Blue Staging Box Indicator -->
+            <div class="tree-center-blue w-3 h-3 rounded-sm bulb bulb-blue-off"></div>
+            <!-- Right Lane Pre-Stage Bulbs -->
+            <div class="flex gap-1">
+              <div class="tree-pre-2 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+              <div class="tree-pre-2 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+            </div>
+          </div>
         </div>
-        <!-- Stage Bulbs -->
-        <div class="flex gap-1.5 mb-3">
-          <div class="tree-stage-1 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
-          <div class="tree-stage-1 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
+
+        <!-- HEADER 2: STAGE -->
+        <div class="accutime-header-box px-3 py-1 flex flex-col items-center w-48 text-center mb-1">
+          <span class="text-[10px] font-black tracking-widest text-white uppercase font-sans">STAGE</span>
+          <div class="flex items-center justify-between w-full mt-1 px-2">
+            <!-- Left Lane Stage Bulbs -->
+            <div class="flex gap-1">
+              <div class="tree-stage-1 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+              <div class="tree-stage-1 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+            </div>
+            <!-- Empty center spacing -->
+            <div class="w-3"></div>
+            <!-- Right Lane Stage Bulbs -->
+            <div class="flex gap-1">
+              <div class="tree-stage-2 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+              <div class="tree-stage-2 w-2.5 h-2.5 rounded-full bulb bulb-ind-off"></div>
+            </div>
+          </div>
         </div>
-        <!-- 3 Countdown Ambers -->
-        <div class="tree-amber1-1 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
-        <div class="tree-amber2-1 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
-        <div class="tree-amber3-1 w-6 h-6 rounded-full bulb bulb-amber-off mb-2.5"></div>
-        <!-- Green -->
-        <div class="tree-green-1 w-6 h-6 rounded-full bulb bulb-green-off mb-2"></div>
-        <!-- Red -->
-        <div class="tree-red-1 w-6 h-6 rounded-full bulb bulb-red-off"></div>
+
+        <!-- MAIN TREE BODY: ACCUTIME CENTER SPINE & DUAL BLINDERS -->
+        <div class="flex items-stretch justify-center">
+          
+          <!-- LANE 1 BULBS (LEFT) -->
+          <div class="accutime-blinder p-2 flex flex-col items-center justify-around w-16 rounded-l-md">
+            <div class="tree-amber1-1 w-6 h-6 rounded-full bulb bulb-amber-off my-1"></div>
+            <div class="tree-amber2-1 w-6 h-6 rounded-full bulb bulb-amber-off my-1"></div>
+            <div class="tree-amber3-1 w-6 h-6 rounded-full bulb bulb-amber-off my-1"></div>
+            <div class="tree-green-1 w-6 h-6 rounded-full bulb bulb-green-off my-1"></div>
+            <div class="tree-red-1 w-6 h-6 rounded-full bulb bulb-red-off my-1"></div>
+          </div>
+
+          <!-- CENTER ACCUTIME BRANDED SPINE -->
+          <div class="accutime-spine w-11 flex flex-col items-center justify-between py-2 px-0.5 border-x border-neutral-700">
+            <div class="text-[9px] font-black not-italic text-red-600 tracking-normal" style="writing-mode: horizontal-tb;">▲</div>
+            <div class="text-[10px] font-black uppercase text-black font-mono">ACCUTIME</div>
+            <div class="w-1.5 h-1.5 bg-neutral-900 rounded-full" style="writing-mode: horizontal-tb;"></div>
+          </div>
+
+          <!-- LANE 2 BULBS (RIGHT) -->
+          <div class="accutime-blinder p-2 flex flex-col items-center justify-around w-16 rounded-r-md">
+            <div class="tree-amber1-2 w-6 h-6 rounded-full bulb bulb-amber-off my-1"></div>
+            <div class="tree-amber2-2 w-6 h-6 rounded-full bulb bulb-amber-off my-1"></div>
+            <div class="tree-amber3-2 w-6 h-6 rounded-full bulb bulb-amber-off my-1"></div>
+            <div class="tree-green-2 w-6 h-6 rounded-full bulb bulb-green-off my-1"></div>
+            <div class="tree-red-2 w-6 h-6 rounded-full bulb bulb-red-off my-1"></div>
+          </div>
+
+        </div>
+
+        <!-- STEEL POST & CONCRETE MOUNTING BASE -->
+        <div class="w-4 h-6 bg-neutral-800 border-x border-neutral-700"></div>
+        <div class="w-20 h-3 bg-neutral-400 rounded-t-sm shadow-md border-t border-neutral-200" title="Starting Line Concrete Footer"></div>
       </div>
 
-      <!-- CENTER HERO HEADLINE -->
-      <div class="text-center flex-1">
+      <!-- MAIN HEADLINE & WELCOME -->
+      <div class="text-center md:text-left flex-1">
         <div class="inline-block px-3 py-1 mb-3 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest uppercase">
-          Grand Opening Weekend Updates • South MS Motorsports
+          Swamp Bottom Dragstrip • Opening Season 2026
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-3">
           TRACKSIDE <span class="text-amber-500 accent-glow">PINE BELT</span>
         </h1>
-        <p class="text-neutral-300 max-w-xl mx-auto text-sm sm:text-base">
-          Real-time Density Altitude (DA), weekend event schedules, and logistics for Swamp Bottom Dragstrip and regional South Mississippi speedways.
+        <p class="text-neutral-300 max-w-xl text-sm sm:text-base leading-relaxed mb-4">
+          Real-time Density Altitude (DA) calculations, Accutime countdown telemetry, run schedules, and racer logistics for Columbia, Mississippi and South MS tracks.
         </p>
 
-        <!-- MINI TREE FOR MOBILE (SYNCS WITH ANIMATION) -->
-        <div class="flex md:hidden items-center justify-center gap-2 mt-4 pt-3 border-t border-neutral-900">
-          <span class="text-[10px] text-neutral-500 uppercase font-mono mr-1">Tree:</span>
-          <div class="tree-pre-1 w-2.5 h-2.5 rounded-full bulb bulb-blue-off"></div>
-          <div class="tree-amber1-1 w-3 h-3 rounded-full bulb bulb-amber-off"></div>
-          <div class="tree-amber2-1 w-3 h-3 rounded-full bulb bulb-amber-off"></div>
-          <div class="tree-amber3-1 w-3 h-3 rounded-full bulb bulb-amber-off"></div>
-          <div class="tree-green-1 w-3.5 h-3.5 rounded-full bulb bulb-green-off"></div>
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs">
+          <span class="bg-neutral-900 text-neutral-300 border border-neutral-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-location-dot text-amber-500 mr-1.5"></i> Columbia, MS
+          </span>
+          <span class="bg-neutral-900 text-neutral-300 border border-neutral-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-road text-amber-500 mr-1.5"></i> 1/4-Mile Concrete Track
+          </span>
+          <span class="bg-neutral-900 text-neutral-300 border border-neutral-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-shield-halved text-amber-500 mr-1.5"></i> NHRA Div 4
+          </span>
         </div>
-      </div>
-
-      <!-- RIGHT CHRISTMAS TREE (LANE 2) -->
-      <div class="hidden md:flex flex-col items-center tree-housing p-3 rounded-2xl border border-neutral-800/90 shrink-0">
-        <span class="text-[9px] font-mono uppercase tracking-widest text-neutral-500 font-bold mb-1.5">LANE 2</span>
-        
-        <!-- Pre-Stage Bulbs -->
-        <div class="flex gap-1.5 mb-1">
-          <div class="tree-pre-2 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
-          <div class="tree-pre-2 w-3.5 h-2.5 rounded-t-sm bulb bulb-blue-off" title="Pre-Stage"></div>
-        </div>
-        <!-- Stage Bulbs -->
-        <div class="flex gap-1.5 mb-3">
-          <div class="tree-stage-2 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
-          <div class="tree-stage-2 w-3.5 h-2.5 rounded-b-sm bulb bulb-blue-off" title="Stage"></div>
-        </div>
-        <!-- 3 Countdown Ambers -->
-        <div class="tree-amber1-2 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
-        <div class="tree-amber2-2 w-6 h-6 rounded-full bulb bulb-amber-off mb-1.5"></div>
-        <div class="tree-amber3-2 w-6 h-6 rounded-full bulb bulb-amber-off mb-2.5"></div>
-        <!-- Green -->
-        <div class="tree-green-2 w-6 h-6 rounded-full bulb bulb-green-off mb-2"></div>
-        <!-- Red -->
-        <div class="tree-red-2 w-6 h-6 rounded-full bulb bulb-red-off"></div>
       </div>
 
     </div>
@@ -328,29 +370,6 @@
     </div>
   </section>
 
-  <!-- AEO SEARCH & ANSWER ENGINE FAQ BLOCK -->
-  <section class="max-w-5xl mx-auto w-full px-4 my-8">
-    <div class="gauge-card rounded-xl p-6">
-      <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-circle-question"></i> Track FAQ & Visitor Quick Reference
-      </h3>
-      <div class="space-y-4 text-xs">
-        <div class="border-b border-neutral-800/80 pb-3">
-          <p class="font-bold text-white text-sm">Where is Swamp Bottom Dragstrip located?</p>
-          <p class="text-neutral-300 mt-1">Swamp Bottom Dragstrip is situated on 300+ acres in Columbia, Marion County, Mississippi, conveniently accessible from the US-98 and MS-13 transit corridors.</p>
-        </div>
-        <div class="border-b border-neutral-800/80 pb-3">
-          <p class="font-bold text-white text-sm">What is the track surface and length?</p>
-          <p class="text-neutral-300 mt-1">The facility features a full-length quarter-mile (1/4-mile) poured concrete racing surface equipped with digital timing equipment, extensive shutdown runout, and return lanes.</p>
-        </div>
-        <div>
-          <p class="font-bold text-white text-sm">What events and classes run at the facility?</p>
-          <p class="text-neutral-300 mt-1">As an official member of the NHRA Division 4 South Central network, programs include Summit Racing Equipment E.T. Series, Jr. Dragster League, Street Legal test sessions, and bracket racing series.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- RACER LOGISTICS -->
   <section class="max-w-5xl mx-auto w-full px-4 mb-10">
     <h3 class="text-sm font-bold text-neutral-300 uppercase tracking-wider mb-4">
@@ -386,7 +405,7 @@
     </div>
   </section>
 
-  <!-- FOOTER & LEGAL DISCLAIMER -->
+  <!-- FOOTER -->
   <footer class="mt-auto bg-black border-t border-neutral-900 py-8 px-4 text-center text-xs text-neutral-400">
     <div class="max-w-3xl mx-auto space-y-3">
       <p class="font-medium text-neutral-400">
@@ -401,9 +420,8 @@
     </div>
   </footer>
 
-  <!-- DENSITY ALTITUDE & ANIMATED CHRISTMAS TREE LOGIC -->
+  <!-- SCRIPT FOR DENSITY ALTITUDE AND REALISTIC ACCUTIME TREE ANIMATION -->
   <script>
-    // Tab Switching Logic
     function switchTrack(type) {
       const dragTab = document.getElementById('tab-drag');
       const dirtTab = document.getElementById('tab-dirt');
@@ -423,20 +441,18 @@
       }
     }
 
-    // --- ANIMATED CHRISTMAS TREE SEQUENCE (NHRA FULL SPORTSMAN TREE) ---
+    // --- ACCUTIME SEQUENCING LOGIC ---
     function setBulbs(selector, turnOn, onClass) {
       document.querySelectorAll(selector).forEach(el => {
-        if(turnOn) {
-          el.classList.add(onClass);
-        } else {
-          el.classList.remove(onClass);
-        }
+        if(turnOn) el.classList.add(onClass);
+        else el.classList.remove(onClass);
       });
     }
 
-    function resetAllBulbs() {
-      setBulbs('.tree-pre-1, .tree-pre-2', false, 'bulb-blue-on');
-      setBulbs('.tree-stage-1, .tree-stage-2', false, 'bulb-blue-on');
+    function resetAccutimeTree() {
+      setBulbs('.tree-pre-1, .tree-pre-2', false, 'bulb-ind-on');
+      setBulbs('.tree-center-blue', false, 'bulb-blue-on');
+      setBulbs('.tree-stage-1, .tree-stage-2', false, 'bulb-ind-on');
       setBulbs('.tree-amber1-1, .tree-amber1-2', false, 'bulb-amber-on');
       setBulbs('.tree-amber2-1, .tree-amber2-2', false, 'bulb-amber-on');
       setBulbs('.tree-amber3-1, .tree-amber3-2', false, 'bulb-amber-on');
@@ -446,45 +462,48 @@
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-    async function runTreeLoop() {
+    async function runAccutimeLoop() {
       while(true) {
-        resetAllBulbs();
-        await sleep(1000);
-
-        // 1. Pre-Stage on Lane 1 & 2
-        setBulbs('.tree-pre-1, .tree-pre-2', true, 'bulb-blue-on');
-        await sleep(800);
-
-        // 2. Stage on Lane 1 & 2
-        setBulbs('.tree-stage-1, .tree-stage-2', true, 'bulb-blue-on');
+        resetAccutimeTree();
         await sleep(1200);
 
-        // 3. Amber 1 (0.500 count)
+        // 1. Lane 1 creeps into Pre-Stage beam
+        setBulbs('.tree-pre-1', true, 'bulb-ind-on');
+        setBulbs('.tree-center-blue', true, 'bulb-blue-on');
+        await sleep(600);
+
+        // 2. Lane 2 creeps into Pre-Stage beam
+        setBulbs('.tree-pre-2', true, 'bulb-ind-on');
+        await sleep(1000);
+
+        // 3. Both vehicles bump into final STAGE
+        setBulbs('.tree-stage-1, .tree-stage-2', true, 'bulb-ind-on');
+        await sleep(1400); // Drivers on transbrake / rev limiters
+
+        // 4. Accutime Sportsman Tree Drops (0.500 count)
         setBulbs('.tree-amber1-1, .tree-amber1-2', true, 'bulb-amber-on');
         await sleep(500);
 
-        // 4. Amber 2 (0.500 count)
         setBulbs('.tree-amber1-1, .tree-amber1-2', false, 'bulb-amber-on');
         setBulbs('.tree-amber2-1, .tree-amber2-2', true, 'bulb-amber-on');
         await sleep(500);
 
-        // 5. Amber 3 (0.500 count)
         setBulbs('.tree-amber2-1, .tree-amber2-2', false, 'bulb-amber-on');
         setBulbs('.tree-amber3-1, .tree-amber3-2', true, 'bulb-amber-on');
         await sleep(500);
 
-        // 6. GREEN LIGHT (Launch!)
+        // 5. GREEN LIGHT! (Hit it!)
         setBulbs('.tree-amber3-1, .tree-amber3-2', false, 'bulb-amber-on');
         setBulbs('.tree-green-1, .tree-green-2', true, 'bulb-green-on');
-        await sleep(2200);
+        await sleep(2500);
 
-        // 7. Track Cleared / Cooldown
-        resetAllBulbs();
+        // 6. Reset tree for next pair
+        resetAccutimeTree();
         await sleep(1500);
       }
     }
 
-    // --- PSYCHROMETRICS & DENSITY ALTITUDE FORMULAS ---
+    // --- DENSITY ALTITUDE & WEATHER FORMULAS ---
     function calculateDA(tempF, stationPressureInHg, relHumidity) {
       const tempC = (tempF - 32) * (5 / 9);
       const tempK = tempC + 273.15;
@@ -550,10 +569,9 @@
       }
     }
 
-    // Initialize Weather and Tree Sequence
     document.addEventListener('DOMContentLoaded', () => {
       fetchWeatherData();
-      runTreeLoop();
+      runAccutimeLoop();
     });
     setInterval(fetchWeatherData, 15 * 60 * 1000);
   </script>
